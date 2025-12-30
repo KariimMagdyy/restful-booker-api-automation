@@ -30,28 +30,20 @@ jobs:
           docker compose up -d --build
           docker compose ps
 
-      - name: Wait for API readiness (debug if not ready)
+      - name: Wait for API readiness (and stabilize)
         run: |
           for i in {1..60}; do
-            echo "Attempt $i/60"
-            echo "PING:"
-            curl -i http://localhost:3001/ping || true
-
             code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3001/ping || true)
             if [ "$code" = "200" ] || [ "$code" = "201" ]; then
               echo "API is up! /ping returned $code"
+              echo "Waiting for SUT to stabilize..."
+              sleep 15
               exit 0
             fi
-
             echo "Waiting for API... (got $code)"
-            echo "SUT logs (latest):"
-            docker compose -f sut-restful-booker/docker-compose.yml logs --no-color --tail=200 || true
             sleep 2
           done
-
           echo "API did not become ready in time"
-          docker ps
-          echo "Final SUT logs:"
           docker compose -f sut-restful-booker/docker-compose.yml logs --no-color || true
           exit 1
 

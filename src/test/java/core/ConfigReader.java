@@ -22,19 +22,9 @@ public class ConfigReader {
         }
     }
 
-    public String getBaseUrl() {
-        String override = System.getProperty("base.url");
-
-        if (override != null && !override.isBlank()) {
-            System.out.println("[CONFIG] Using base.url from System property: " + override);
-            return override;
-        }
-
-        String fromFile = props.getProperty("base.url");
-        System.out.println("[CONFIG] Using base.url from config.properties: " + fromFile);
-        return fromFile;
+    public String getBaseUrl(){
+        return props.getProperty("base.url");
     }
-
 
     public String getUserName(){
         return props.getProperty("auth.username");
