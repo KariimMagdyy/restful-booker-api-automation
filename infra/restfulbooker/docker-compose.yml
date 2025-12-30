@@ -1,5 +1,0 @@
-services:
-  restful-booker:
-    image: markhobson/restful-booker:latest
-    ports:
-      - "3001:3001"

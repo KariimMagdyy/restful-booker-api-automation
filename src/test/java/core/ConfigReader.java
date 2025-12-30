@@ -4,7 +4,7 @@ import java.io.InputStream;
 
 public class ConfigReader {
 
-    private Properties props = new Properties();  // Now , "props" object has the Properties class methods
+    private final Properties props = new Properties();  // Now , "props" object has the Properties class methods
 
     public ConfigReader() {  // Locate the file through the classloader
         try {
