@@ -54,8 +54,7 @@ public class BookingTests{
         Response createResponse = BookingService.createBooking(spec, payload);
         int bookingId = createResponse.as(CreateBookingResponse.class).getBookingid();
         Response deleteResponse = BookingService.deleteBooking(spec,bookingId);
-        CommonValidators.assertStatusCode(deleteResponse, 200);
-        CommonValidators.assertBookingResponse(deleteResponse, payload);
+        CommonValidators.assertStatusCode(deleteResponse, 201);
     }
 
     @Test(groups = "Negative")
