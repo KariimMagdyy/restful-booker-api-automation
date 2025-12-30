@@ -1,6 +1,5 @@
-version: '2'
 services:
   restful-booker:
-    image: restful-booker-restful-booker:latest
+    image: markhobson/restful-booker:latest
     ports:
       - "3001:3001"
