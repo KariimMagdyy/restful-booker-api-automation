@@ -20,7 +20,7 @@ public class CommonValidators {
                 .body(jsonPath, equalTo(expectedValue));
     }
 
-    public static void assertBookingResponse(Response response, Booking payload) {
+    public static void assertCreateBookingResponse(Response response, Booking payload) {
 
         assertField(response, "booking.firstname", payload.getFirstname());
         assertField(response, "booking.lastname", payload.getLastname());
@@ -34,6 +34,23 @@ public class CommonValidators {
                 payload.getBookingdates().getCheckout());
 
         assertField(response, "booking.additionalneeds",
+                payload.getAdditionalneeds());
+    }
+
+    public static void assertBookingResponse(Response response, Booking payload) {
+
+        assertField(response, "firstname", payload.getFirstname());
+        assertField(response, "lastname", payload.getLastname());
+        assertField(response, "totalprice", payload.getTotalprice());
+        assertField(response, "depositpaid", payload.isDepositpaid());
+
+        assertField(response, "bookingdates.checkin",
+                payload.getBookingdates().getCheckin());
+
+        assertField(response, "bookingdates.checkout",
+                payload.getBookingdates().getCheckout());
+
+        assertField(response, "additionalneeds",
                 payload.getAdditionalneeds());
     }
 }

@@ -19,7 +19,7 @@ public class BookingTests{
         RequestSpecification spec = RequestSpecFactory.getBaseSpec();
         Response response = BookingService.createBooking(spec,payload);
         CommonValidators.assertStatusCode(response,200);
-        CommonValidators.assertBookingResponse(response,payload);
+        CommonValidators.assertCreateBookingResponse(response,payload);
     }
 
     @Test(groups = "Smoke")
