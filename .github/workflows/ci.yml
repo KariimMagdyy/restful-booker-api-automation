@@ -26,8 +26,9 @@ jobs:
       - name: Start Restful-Booker (Docker Compose)
         working-directory: sut-restful-booker
         run: |
+          docker compose down -v || true
           docker compose up -d --build
-          docker ps
+          docker compose ps
 
       - name: Wait for API readiness
         run: |
