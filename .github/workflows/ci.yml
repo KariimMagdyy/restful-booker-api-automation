@@ -67,9 +67,12 @@ jobs:
           exit 1
 
       # 7) Run your API tests
-      - name: Run tests
+      - name: Run smoke tests
         run: |
-          mvn -q -DbaseUrl="${SUT_BASE_URL}" test
+          mvn -q test \
+          -DsuiteXmlFile=testng-smoke.xml \
+          -Dbase.url="${SUT_BASE_URL}"
+
 
       # 8) Always collect useful artifacts
       - name: Upload surefire reports
