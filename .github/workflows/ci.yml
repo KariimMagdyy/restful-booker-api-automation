@@ -11,7 +11,7 @@ jobs:
 
     env:
       # Change these to match your SUT
-      SUT_REPO_URL: https://github.com/mwinteringham/restful-booker
+      SUT_REPO_URL: https://github.com/KariimMagdyy/restful-booker
       SUT_DIR: sut
       SUT_BASE_URL: http://localhost:3001
       SUT_HEALTH_PATH: /ping
